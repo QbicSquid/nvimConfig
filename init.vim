@@ -2,10 +2,14 @@
 let mapleader=" "
 nnoremap <C-Up> :tabprevious<CR>
 nnoremap <C-Down> :tabnext<CR>
+
 nnoremap <silent> <Tab> :NERDTreeToggle<CR>
 
 map <C-_> <plug>NERDCommenterInvert
-map <Leader>g :GitGutterToggle<CR>
+
+nmap <leader>rn <plug>lsp-rename
+
+map <leader>g :GitGutterToggle<CR>
 
     " Plugins
 "
