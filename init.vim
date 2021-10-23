@@ -1,8 +1,11 @@
     " Hotkeys
+let mapleader=" "
 nnoremap <C-Up> :tabprevious<CR>
 nnoremap <C-Down> :tabnext<CR>
 nnoremap <silent> <Tab> :NERDTreeToggle<CR>
 
+map <C-_> <plug>NERDCommenterInvert
+map <Leader>g :GitGutterToggle<CR>
 
     " Plugins
 "
@@ -24,6 +27,9 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'tpope/vim-surround'                       " edit brackets, quotation marks; both ends at once!
     Plug 'prettier/vim-prettier'                    " code formatter for html/css/js etc
     Plug 'mattn/emmet-vim'                          " HTML and CSS code completion
+    Plug 'preservim/nerdcommenter'                  " commenting out lines
+    Plug 'airblade/vim-gitgutter'                   " uses git to show edited lines; see hotkeys
+    Plug 'christoomey/vim-tmux-navigator'           " vim pane/split navigator
 call plug#end()
 
 colorscheme gruvbox
@@ -59,6 +65,8 @@ function! StartUp()
 		wincmd w
 		q
 	end
+
+    GitGutterDisable
 endfunction
 
 autocmd VimEnter * call StartUp()
@@ -79,6 +87,15 @@ set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
+set updatetime=100 " default: 4000 (4 secdonds)
 
-runtime coc.vim
+let g:gitgutter_max_signs = -1  " default: 500 to avoid slowing the UI
+
+" NERDCommenter
+filetype plugin on
+let g:NERDCreateDefaultMappings = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDCommentEmptyLines = 1
+
+runtime coc.vim     " call the coc.vim file
 
