@@ -31,17 +31,24 @@ colorscheme gruvbox
 let g:NERDTreeGitStatusConcealBrackets = 1 " default: 0
 let g:NERDTreeGitStatusAlignIfConceal = 0 " default: 1
 let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'!',
-                \ 'Staged'    :'✚',
-                \ 'Untracked' :'✭',
-                \ 'Renamed'   :'➜',
-                \ 'Unmerged'  :'═',
-                \ 'Deleted'   :'✖',
-                \ 'Dirty'     :'✗',
-                \ 'Ignored'   :'☒',
-                \ 'Clean'     :'✔︎',
-                \ 'Unknown'   :'?',
-                \ } " default Modified: '✹'
+    \ 'Modified'  :'!',
+    \ 'Staged'    :'✚',
+    \ 'Untracked' :'✭',
+    \ 'Renamed'   :'➜',
+    \ 'Unmerged'  :'═',
+    \ 'Deleted'   :'✖',
+    \ 'Dirty'     :'✗',
+    \ 'Ignored'   :'☒',
+    \ 'Clean'     :'✔︎',
+    \ 'Unknown'   :'?',
+    \} " default Modified: '✹'
+
+let g:coc_global_extensions = [
+    \ 'coc-tsserver',
+    \ 'coc-prettier',
+    \ 'coc-json',
+    \ 'coc-clangd',
+    \]
 
 
     " what to do after startup,
@@ -72,4 +79,6 @@ set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
+
+runtime coc.vim
 
