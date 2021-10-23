@@ -1,4 +1,5 @@
-    " Hotkeys
+"________________________________________________________________________Hotkeys
+
 let mapleader=" "
 nnoremap <C-Up> :tabprevious<CR>
 nnoremap <C-Down> :tabnext<CR>
@@ -11,8 +12,8 @@ nmap <leader>rn <plug>lsp-rename
 
 map <leader>g :GitGutterToggle<CR>
 
-    " Plugins
-"
+"________________________________________________________________________Plugins
+
 " added vim-plug (plug.vim) into the 'autoload' dir with
 " curl https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -o plug.vim
 
@@ -34,6 +35,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'preservim/nerdcommenter'                  " commenting out lines
     Plug 'airblade/vim-gitgutter'                   " uses git to show edited lines; see hotkeys
     Plug 'christoomey/vim-tmux-navigator'           " vim pane/split navigator
+    Plug 'octol/vim-cpp-enhanced-highlight'         " better sytax highlighitng for c/c++
 call plug#end()
 
 colorscheme gruvbox
@@ -53,6 +55,7 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ 'Unknown'   :'?',
     \} " default Modified: '✹'
 
+" language servers in coc
 let g:coc_global_extensions = [
     \ 'coc-tsserver',
     \ 'coc-prettier',
@@ -60,8 +63,17 @@ let g:coc_global_extensions = [
     \ 'coc-clangd',
     \]
 
+let g:gitgutter_max_signs = -1  " default: 500 to avoid slowing the UI
 
-    " what to do after startup,
+" NERDCommenter
+filetype plugin on
+let g:NERDCreateDefaultMappings = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDCommentEmptyLines = 1
+
+
+"_______________________________________________________what to do after startup
+
 function! StartUp()
 	" If no file is opened, open NERDTree only
     if 0 == argc()
@@ -76,7 +88,8 @@ endfunction
 autocmd VimEnter * call StartUp()
 
 
-    " stuff
+"__________________________________________________________________________stuff
+
 filetype plugin indent on
 syntax on
 set colorcolumn=81
@@ -92,14 +105,6 @@ set shiftwidth=4
 set expandtab
 set smartindent
 set updatetime=100 " default: 4000 (4 secdonds)
-
-let g:gitgutter_max_signs = -1  " default: 500 to avoid slowing the UI
-
-" NERDCommenter
-filetype plugin on
-let g:NERDCreateDefaultMappings = 1
-let g:NERDDefaultAlign = 'left'
-let g:NERDCommentEmptyLines = 1
 
 runtime coc.vim     " call the coc.vim file
 
