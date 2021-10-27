@@ -3,6 +3,7 @@
 let mapleader=" "
 nnoremap <C-Up> :tabprevious<CR>
 nnoremap <C-Down> :tabnext<CR>
+nnoremap <C-q> :qa<CR>
 
 nnoremap <silent> <Tab> :NERDTreeToggle<CR>
 
