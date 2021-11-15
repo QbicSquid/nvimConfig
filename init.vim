@@ -4,6 +4,8 @@ let mapleader=" "
 nnoremap <C-Up> :tabprevious<CR>
 nnoremap <C-Down> :tabnext<CR>
 nnoremap <C-q> :qa<CR>
+map <C-a> 1GVG
+
 
 nnoremap <silent> <Tab> :NERDTreeToggle<CR>
 
@@ -37,6 +39,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'airblade/vim-gitgutter'                   " uses git to show edited lines; see hotkeys
     Plug 'christoomey/vim-tmux-navigator'           " vim pane/split navigator
     Plug 'octol/vim-cpp-enhanced-highlight'         " better sytax highlighitng for c/c++
+    Plug 'junegunn/fzf'
+    Plug 'junegunn/fzf.vim'                         " fuzzy search within files :Rg [keyword] to use
 call plug#end()
 
 colorscheme gruvbox
@@ -105,7 +109,8 @@ set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
-set updatetime=100 " default: 4000 (4 secdonds)
+set updatetime=100 " default: 4000 (4 seconds)
+" set clipboard+=unnamedplus " always yank/pull to system clipboard
 
 runtime coc.vim     " call the coc.vim file
 
