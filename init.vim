@@ -6,6 +6,13 @@ nnoremap <C-Down> :tabnext<CR>
 nnoremap <C-q> :qa<CR>
 map <C-a> 1GVG
 
+" moving blocks of code up or down
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
 
 nnoremap <silent> <Tab> :NERDTreeToggle<CR>
 
