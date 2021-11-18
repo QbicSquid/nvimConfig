@@ -5,6 +5,7 @@ nnoremap <C-Up> :tabprevious<CR>
 nnoremap <C-Down> :tabnext<CR>
 nnoremap <C-q> :qa<CR>
 map <C-a> 1GVG
+nnoremap <esc><esc> :noh<return>
 
 " moving blocks of code up or down
 nnoremap <A-j> :m .+1<CR>==
