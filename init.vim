@@ -1,11 +1,15 @@
 "________________________________________________________________________Hotkeys
 
 let mapleader=" "
+map <C-a> 0GVG
+map <C-_> <plug>NERDCommenterInvert
+map <leader>g :GitGutterToggle<CR>
+nmap <leader>rn <plug>lsp-rename
 nnoremap <C-Up> :tabprevious<CR>
 nnoremap <C-Down> :tabnext<CR>
-nnoremap <C-q> :qa<CR>
-map <C-a> 1GVG
 nnoremap <esc><esc> :noh<return>
+nnoremap <silent> <Tab> :NERDTreeToggle<CR>
+tnoremap <esc> <C-\><C-n>
 
 " moving blocks of code up or down
 nnoremap <A-j> :m .+1<CR>==
@@ -15,13 +19,8 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
-nnoremap <silent> <Tab> :NERDTreeToggle<CR>
-
-map <C-_> <plug>NERDCommenterInvert
-
-nmap <leader>rn <plug>lsp-rename
-
-map <leader>g :GitGutterToggle<CR>
+" see documentation. C-f and C-b to scroll
+nmap <F1> :call CocAction('doHover')<CR>
 
 "________________________________________________________________________Plugins
 
@@ -119,6 +118,8 @@ set expandtab
 set smartindent
 set updatetime=100 " default: 4000 (4 seconds)
 " set clipboard+=unnamedplus " always yank/pull to system clipboard
+set splitbelow " open new horizontal splits, below
+set splitright " open new   vertical splits, to the right
 
 runtime coc.vim     " call the coc.vim file
 
