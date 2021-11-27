@@ -5,11 +5,15 @@ map <C-a> 0GVG
 map <C-_> <plug>NERDCommenterInvert
 map <leader>g :GitGutterToggle<CR>
 nmap <leader>rn <plug>lsp-rename
-nnoremap <C-Up> :tabprevious<CR>
-nnoremap <C-Down> :tabnext<CR>
 nnoremap <esc><esc> :noh<return>
 nnoremap <silent> <Tab> :NERDTreeToggle<CR>
 tnoremap <esc> <C-\><C-n>
+
+" switching tabs
+nnoremap <C-Up> :tabprevious<CR>
+nnoremap <C-Down> :tabnext<CR>
+tnoremap <C-Up> <C-\><C-n>:tabprevious<CR>
+tnoremap <C-Down> <C-\><C-n>:tabnext<CR>
 
 " moving blocks of code up or down
 nnoremap <A-j> :m .+1<CR>==
