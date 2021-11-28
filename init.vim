@@ -9,6 +9,11 @@ nnoremap <esc><esc> :noh<return>
 nnoremap <silent> <Tab> :NERDTreeToggle<CR>
 tnoremap <esc> <C-\><C-n>
 
+" see documentation and completion. C-f and C-b to scroll
+inoremap <silent><expr> <c-space> coc#refresh()
+nnoremap <silent> <F1> :call CocAction('doHover')<CR>
+inoremap <silent> <F1> <C-r>=CocActionAsync('showSignatureHelp')<CR>
+
 " switching tabs
 nnoremap <C-Up> :tabprevious<CR>
 nnoremap <C-Down> :tabnext<CR>
@@ -23,8 +28,6 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
-" see documentation. C-f and C-b to scroll
-nmap <F1> :call CocAction('doHover')<CR>
 
 "________________________________________________________________________Plugins
 
