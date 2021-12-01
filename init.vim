@@ -55,6 +55,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'octol/vim-cpp-enhanced-highlight'         " better sytax highlighitng for c/c++
     Plug 'junegunn/fzf'
     Plug 'junegunn/fzf.vim'                         " fuzzy search within files :Rg [keyword] to use
+    Plug 'gcmt/taboo.vim'                           " tab labeler. commands start with :Taboo
 call plug#end()
 
 colorscheme gruvbox
