@@ -128,6 +128,7 @@ set updatetime=100 " default: 4000 (4 seconds)
 " set clipboard+=unnamedplus " always yank/pull to system clipboard
 set splitbelow " open new horizontal splits, below
 set splitright " open new   vertical splits, to the right
+autocmd BufNewFile,BufRead * setlocal formatoptions-=cro " stop commenting new lines
 
 runtime coc.vim     " call the coc.vim file
 
