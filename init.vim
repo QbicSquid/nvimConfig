@@ -51,7 +51,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'mattn/emmet-vim'                          " HTML and CSS code completion
     Plug 'preservim/nerdcommenter'                  " commenting out lines
     Plug 'airblade/vim-gitgutter'                   " uses git to show edited lines; see hotkeys
-    Plug 'christoomey/vim-tmux-navigator'           " vim pane/split navigator
+    Plug 'christoomey/vim-tmux-navigator'           " Intergrate tmux navigation with vim pane navigation
     Plug 'octol/vim-cpp-enhanced-highlight'         " better sytax highlighitng for c/c++
     Plug 'junegunn/fzf'
     Plug 'junegunn/fzf.vim'                         " fuzzy search within files :Rg [keyword] to use
@@ -95,12 +95,12 @@ let g:NERDCommentEmptyLines = 1
 "_______________________________________________________what to do after startup
 
 function! StartUp()
-	" If no file is opened, open NERDTree only
+    " If no file is opened, open NERDTree only
     if 0 == argc()
-		NERDTree
-		wincmd w
-		q
-	end
+        NERDTree
+    	wincmd w
+        q
+    end
 
     GitGutterDisable
 endfunction
