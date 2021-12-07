@@ -15,10 +15,8 @@ nnoremap <silent> <F1> :call CocAction('doHover')<CR>
 inoremap <silent> <F1> <C-r>=CocActionAsync('showSignatureHelp')<CR>
 
 " switching tabs
-nnoremap <C-Up> :tabprevious<CR>
-nnoremap <C-Down> :tabnext<CR>
-tnoremap <C-Up> <C-\><C-n>:tabprevious<CR>
-tnoremap <C-Down> <C-\><C-n>:tabnext<CR>
+tnoremap <C-PageUp> <C-\><C-n>:tabprevious<CR>
+tnoremap <C-PageDown> <C-\><C-n>:tabnext<CR>
 
 " moving blocks of code up or down
 nnoremap <A-j> :m .+1<CR>==
