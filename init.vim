@@ -1,7 +1,7 @@
 "________________________________________________________________________Hotkeys
 
 let mapleader=" "
-map <C-a> 0GVG
+map <C-a> 1GV0G
 map <C-_> <plug>NERDCommenterInvert
 map <leader>g :GitGutterToggle<CR>
 nmap <leader>rn <plug>lsp-rename
