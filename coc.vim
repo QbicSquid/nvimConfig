@@ -162,3 +162,14 @@ nnoremap <silent><nowait> <C-space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <C-space>p  :<C-u>CocListResume<CR>
 
+
+"_________________________________________________________________Things I added
+
+" language servers in coc
+let g:coc_global_extensions = [
+    \ 'coc-tsserver',
+    \ 'coc-prettier',
+    \ 'coc-json',
+    \ 'coc-clangd',
+    \]
+

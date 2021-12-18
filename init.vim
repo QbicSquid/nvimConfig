@@ -73,14 +73,6 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ 'Unknown'   :'?',
     \} " default Modified: '✹'
 
-" language servers in coc
-let g:coc_global_extensions = [
-    \ 'coc-tsserver',
-    \ 'coc-prettier',
-    \ 'coc-json',
-    \ 'coc-clangd',
-    \]
-
 let g:gitgutter_max_signs = -1  " default: 500 to avoid slowing the UI
 
 " NERDCommenter
