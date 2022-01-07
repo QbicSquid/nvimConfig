@@ -26,6 +26,10 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
+" (compile and) run
+let runcmd = '!echo "command not set"'
+nnoremap <F5> :execute runcmd<CR>
+
 
 "________________________________________________________________________Plugins
 
@@ -119,7 +123,7 @@ set updatetime=100 " default: 4000 (4 seconds)
 set splitbelow " open new horizontal splits, below
 set splitright " open new   vertical splits, to the right
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro " stop commenting new lines
-set autochdir " always set the current working dir to the dir of the diting file
+set autochdir " always set the current working dir to the dir of the editing file
 
 runtime coc.vim     " call the coc.vim file
 
