@@ -26,12 +26,6 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
-" (compile and) run
-let runcmd = '!echo "command not set"'
-nnoremap <S-F5> :execute runcmd<CR>
-
-" vimspector debugging
-nnoremap <S-F3> :VimspectorReset<CR>
 
 "________________________________________________________________________Plugins
 
