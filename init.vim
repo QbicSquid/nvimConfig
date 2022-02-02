@@ -58,6 +58,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'junegunn/fzf'
     Plug 'junegunn/fzf.vim'                         " fuzzy search within files :Rg [keyword] to use
     Plug 'gcmt/taboo.vim'                           " tab labeler. commands start with :Taboo
+    Plug 'puremourning/vimspector'                  " visual debugger (multi language)
 call plug#end()
 
 colorscheme gruvbox
