@@ -28,8 +28,10 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " (compile and) run
 let runcmd = '!echo "command not set"'
-nnoremap <F5> :execute runcmd<CR>
+nnoremap <S-F5> :execute runcmd<CR>
 
+" vimspector debugging
+nnoremap <S-F3> :VimspectorReset<CR>
 
 "________________________________________________________________________Plugins
 
@@ -86,6 +88,8 @@ let g:NERDCreateDefaultMappings = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
 
+" Vimspector
+let g:vimspector_enable_mappings = 'HUMAN'
 
 "_______________________________________________________what to do after startup
 
