@@ -28,10 +28,10 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " (compile and) run
 let runcmd = '!echo "command not set"'
-nnoremap <S-F5> :execute runcmd<CR>
+nnoremap <leader>qr :execute runcmd<CR>
 
 " vimspector debugging
-nnoremap <S-F3> :VimspectorReset<CR>
+nnoremap <leader>vr :VimspectorReset<CR>
 
 "________________________________________________________________________Plugins
 
