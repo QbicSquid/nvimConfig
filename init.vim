@@ -1,4 +1,4 @@
-"fodicn["two"])________________________________________________________________________Hotkeys
+"________________________________________________________________________Hotkeys
 
 let mapleader=" "
 map <C-a> 1GV0G
@@ -45,6 +45,9 @@ filetype off		" required
 call plug#begin('~/.config/nvim/plugged')
     Plug 'morhetz/gruvbox'				            " color scheme
     Plug 'arcticicestudio/nord-vim'                 " color scheme
+    Plug 'sainnhe/edge'                             " color scheme
+    Plug 'sainnhe/sonokai'                          " color scheme
+    Plug 'sainnhe/gruvbox-material'                 " color scheme
 
     Plug 'tpope/vim-fugitive'			            " nvim git integration
     Plug 'preservim/nerdtree'			            " side panel file explorer
@@ -71,7 +74,31 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'psliwka/vim-smoothie'                     " smooth scrolling
 call plug#end()
 
+" Theme configs
+"if has('termguicolors')
+  "set termguicolors
+"endif
+set background=dark
+
+let g:gruvbox_material_background = 'soft'
+" Available values:  'hard', 'medium', 'soft'
+let g:gruvbox_material_palette = 'material'
+" Available values:  'material', 'mix', 'original'
+let g:gruvbox_material_enable_italic = 1
+let g:gruvbox_material_disable_italic_comment = 1
+
+let g:edge_style = 'aura'
+"Available styles:  'default', 'aura', 'neon'
+let g:edge_enable_italic = 1
+let g:edge_disable_italic_comment = 1
+
+let g:sonokai_style = 'andromeda'
+"Available styles:  'default', 'atlantis', 'andromeda', 'shusia', 'maia', 'espresso'
+let g:sonokai_enable_italic = 1
+let g:sonokai_disable_italic_comment = 1
+
 colorscheme gruvbox
+" Theme configs done
 
 let g:NERDTreeGitStatusConcealBrackets = 1 " default: 0
 let g:NERDTreeGitStatusAlignIfConceal = 0 " default: 1
@@ -132,8 +159,7 @@ autocmd BufReadPre * ++once call TablineStartUp()
 filetype plugin indent on
 syntax on
 set colorcolumn=81
-set background=dark
-highlight ColorColumn ctermbg=0 guibg=lightgrey
+"highlight ColorColumn ctermbg=grey guibg=grey
 set number relativenumber
 set nowrap
 set smartcase
@@ -156,7 +182,7 @@ set foldcolumn=0 " increase to see fold column
 set mouse=a
 " highlighting the current line number (next 3 lines)
 highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
-highlight CursorLineNR cterm=NONE ctermbg=NONE ctermfg=yellow guibg=NONE guifg=yello
+highlight CursorLineNR cterm=NONE ctermbg=NONE ctermfg=yellow guibg=NONE guifg=yellow
 set cursorline
 set noshowmode
 
