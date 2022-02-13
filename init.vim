@@ -157,6 +157,7 @@ set mouse=a
 highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 highlight CursorLineNR cterm=NONE ctermbg=NONE ctermfg=yellow guibg=NONE guifg=yello
 set cursorline
+set noshowmode
 
 runtime coc.vim     " call the coc.vim file
 lua require('mini.indentscope').setup()
