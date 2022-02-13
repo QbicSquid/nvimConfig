@@ -5,9 +5,10 @@ map <C-a> 1GV0G
 map <C-_> <plug>NERDCommenterInvert
 map <leader>g :GitGutterToggle<CR>
 nmap <leader>rn <plug>lsp-rename
-nnoremap <esc><esc> :noh<return>
+nmap <esc><esc> :noh<return>
 nnoremap <silent> <Tab> :NERDTreeToggle<CR>
 tnoremap <esc> <C-\><C-n>
+nnoremap <C-p> :Telescope<CR>
 
 " see documentation and completion. C-f and C-b to scroll
 inoremap <silent><expr> <c-space> coc#refresh()
