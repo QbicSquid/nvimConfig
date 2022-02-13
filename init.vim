@@ -43,11 +43,13 @@ filetype off		" required
 
 call plug#begin('~/.config/nvim/plugged')
     Plug 'morhetz/gruvbox'				            " color scheme
+    Plug 'arcticicestudio/nord-vim'                 " color scheme
+
     Plug 'tpope/vim-fugitive'			            " nvim git integration
     Plug 'preservim/nerdtree'			            " side panel file explorer
     Plug 'Xuyuanp/nerdtree-git-plugin'		        " NERDTree git integration
     Plug 'PhilRunninger/nerdtree-visual-selection' 	" NERDTree to open,delete,move,copy multiple files at once
-    Plug 'kien/ctrlp.vim'				            " fuzzy search on files through vim. ctrl+p to activate
+    "Plug 'kien/ctrlp.vim'				            " fuzzy search on files through vim. ctrl+p to activate
     Plug 'neoclide/coc.nvim', {'branch': 'release'} " Highlighting and code completion (do :CocInstall <language>)
     Plug 'jiangmiao/auto-pairs'                     " insert brackets, quotation marks
     Plug 'tpope/vim-surround'                       " edit brackets, quotation marks; both ends at once!
@@ -57,10 +59,15 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'airblade/vim-gitgutter'                   " uses git to show edited lines; see hotkeys
     Plug 'christoomey/vim-tmux-navigator'           " Intergrate tmux navigation with vim pane navigation
     Plug 'octol/vim-cpp-enhanced-highlight'         " better sytax highlighitng for c/c++
-    Plug 'junegunn/fzf'
-    Plug 'junegunn/fzf.vim'                         " fuzzy search within files :Rg [keyword] to use
-    Plug 'gcmt/taboo.vim'                           " tab labeler. commands start with :Taboo
+    "Plug 'junegunn/fzf'
+    "Plug 'junegunn/fzf.vim'                         " fuzzy search within files :Rg [keyword] to use
+    "Plug 'gcmt/taboo.vim'                           " tab labeler. commands start with :Taboo
     Plug 'puremourning/vimspector'                  " visual debugger (multi language)
+    Plug 'nvim-lualine/lualine.nvim'                " prettier status line
+    Plug 'kdheepak/tabline.nvim'                    " prettier tab line
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'            " fuzzy finder with many features
+    Plug 'psliwka/vim-smoothie'                     " smooth scrolling
 call plug#end()
 
 colorscheme gruvbox
@@ -91,7 +98,8 @@ let g:NERDCommentEmptyLines = 1
 " Vimspector
 let g:vimspector_enable_mappings = 'HUMAN'
 
-"_______________________________________________________what to do after startup
+
+"______________________________________________________________________functions
 
 function! StartUp()
     " If no file is opened, open NERDTree only
@@ -101,10 +109,21 @@ function! StartUp()
         q
     end
 
+    lua require('lualine').setup()
     GitGutterDisable
 endfunction
 
+function! TablineStartUp()
+    lua require('tabline').setup()
+    " changed the function M._new_tab_data(tabnr, data) function
+    " to set show_all_buffers to false
+    " in tabline.lua line 115
+endfunction
+
+
+"________________________________________________________________________autocmd
 autocmd VimEnter * call StartUp()
+autocmd BufReadPre * ++once call TablineStartUp()
 
 
 "__________________________________________________________________________stuff
@@ -133,6 +152,11 @@ set foldmethod=indent
 set foldlevel=99 " stops folds with depth less than 99 from folding
 set foldcolumn=0 " increase to see fold column
 " type :%foldc to close the all the top level folds only
+set mouse=a
+" highlighting the current line number (next 3 lines)
+highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+highlight CursorLineNR cterm=NONE ctermbg=NONE ctermfg=yellow guibg=NONE guifg=yello
+set cursorline
 
 runtime coc.vim     " call the coc.vim file
-
+lua require('mini.indentscope').setup()

@@ -171,6 +171,7 @@ let g:coc_global_extensions = [
     \ 'coc-prettier',
     \ 'coc-json',
     \ 'coc-clangd',
-    \ 'coc-pyright'
+    \ 'coc-pyright',
+    \ 'coc-java'
     \]
 
