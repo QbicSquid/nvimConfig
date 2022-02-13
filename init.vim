@@ -5,8 +5,9 @@ map <C-a> 1GV0G
 map <C-_> <plug>NERDCommenterInvert
 map <leader>g :GitGutterToggle<CR>
 nmap <leader>rn <plug>lsp-rename
-nmap <esc><esc> :noh<return>
-nnoremap <silent> <Tab> :NERDTreeToggle<CR>
+nnoremap <silent> <C-n> :NERDTreeToggle<CR>
+nnoremap <silent> <Tab> :bnext<CR>
+nnoremap <silent> <S-Tab> :bprev<CR>
 tnoremap <esc> <C-\><C-n>
 nnoremap <C-p> :Telescope<CR>
 
@@ -131,11 +132,11 @@ let g:vimspector_enable_mappings = 'HUMAN'
 
 function! StartUp()
     " If no file is opened, open NERDTree only
-    if 0 == argc()
-        NERDTree
-    	wincmd w
-        q
-    end
+    "if 0 == argc()
+        "NERDTree
+        "wincmd w
+        "q
+    "end
 
     lua require('lualine').setup()
     GitGutterDisable
@@ -143,7 +144,7 @@ endfunction
 
 function! TablineStartUp()
     lua require('tabline').setup()
-    " changed the function M._new_tab_data(tabnr, data) function
+    " change the function M._new_tab_data(tabnr, data) function
     " to set show_all_buffers to false
     " in tabline.lua line 115
 endfunction
