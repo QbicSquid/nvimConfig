@@ -11,16 +11,16 @@ nnoremap <silent> <S-Tab> :bprev<CR>
 tnoremap <esc> <C-\><C-n>
 nnoremap <C-p> :Telescope<CR>
 
-" see documentation and completion. C-f and C-b to scroll
+"_see documentation and completion. C-f and C-b to scroll
 inoremap <silent><expr> <c-space> coc#refresh()
 nnoremap <silent> <F1> :call CocAction('doHover')<CR>
 inoremap <silent> <F1> <C-r>=CocActionAsync('showSignatureHelp')<CR>
 
-" switching tabs
+"_switching tabs
 tnoremap <C-PageUp> <C-\><C-n>:tabprevious<CR>
 tnoremap <C-PageDown> <C-\><C-n>:tabnext<CR>
 
-" moving blocks of code up or down
+"_moving blocks of code up or down
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
 inoremap <A-j> <Esc>:m .+1<CR>==gi
@@ -28,12 +28,23 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
-" (compile and) run
+"_(compile and) run
 let runcmd = '!echo "command not set"'
 nnoremap <leader>qr :execute runcmd<CR>
 
-" vimspector debugging
+"_vimspector debugging
 nnoremap <leader>vr :VimspectorReset<CR>
+
+"_Dashboard
+nmap <Leader>ss :<C-u>SessionSave<CR>
+nmap <Leader>sl :<C-u>SessionLoad<CR>
+nnoremap <silent> <Leader>fh :DashboardFindHistory<CR>
+nnoremap <silent> <Leader>ff :DashboardFindFile<CR>
+nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
+nnoremap <silent> <Leader>fa :DashboardFindWord<CR>
+nnoremap <silent> <Leader>fb :DashboardJumpMark<CR>
+nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
+
 
 "________________________________________________________________________Plugins
 
@@ -65,17 +76,18 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'christoomey/vim-tmux-navigator'           " Intergrate tmux navigation with vim pane navigation
     Plug 'octol/vim-cpp-enhanced-highlight'         " better sytax highlighitng for c/c++
     "Plug 'junegunn/fzf'
-    "Plug 'junegunn/fzf.vim'                         " fuzzy search within files :Rg [keyword] to use
-    "Plug 'gcmt/taboo.vim'                           " tab labeler. commands start with :Taboo
+    "Plug 'junegunn/fzf.vim'                        " fuzzy search within files :Rg [keyword] to use
+    "Plug 'gcmt/taboo.vim'                          " tab labeler. commands start with :Taboo
     Plug 'puremourning/vimspector'                  " visual debugger (multi language)
     Plug 'nvim-lualine/lualine.nvim'                " prettier status line
     Plug 'kdheepak/tabline.nvim'                    " prettier tab line
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'            " fuzzy finder with many features
     Plug 'psliwka/vim-smoothie'                     " smooth scrolling
+    Plug 'glepnir/dashboard-nvim'                   " Startup page
 call plug#end()
 
-" Theme configs
+"_Theme configs
 "if has('termguicolors')
   "set termguicolors
 "endif
@@ -89,20 +101,21 @@ let g:gruvbox_material_enable_italic = 1
 let g:gruvbox_material_disable_italic_comment = 1
 
 let g:edge_style = 'aura'
-"Available styles:  'default', 'aura', 'neon'
+" Available styles:  'default', 'aura', 'neon'
 let g:edge_enable_italic = 1
 let g:edge_disable_italic_comment = 1
 
 let g:sonokai_style = 'andromeda'
-"Available styles:  'default', 'atlantis', 'andromeda', 'shusia', 'maia', 'espresso'
+" Available styles:  'default', 'atlantis', 'andromeda', 'shusia', 'maia', 'espresso'
 let g:sonokai_enable_italic = 1
 let g:sonokai_disable_italic_comment = 1
 
 colorscheme gruvbox
-" Theme configs done
 
+"_NerdTree
 let g:NERDTreeGitStatusConcealBrackets = 1 " default: 0
 let g:NERDTreeGitStatusAlignIfConceal = 0 " default: 1
+let NERDTreeQuitOnOpen = 3 " default: 0
 let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ 'Modified'  :'!',
     \ 'Staged'    :'✚',
@@ -116,16 +129,27 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ 'Unknown'   :'?',
     \} " default Modified: '✹'
 
+"_Gitgutter
 let g:gitgutter_max_signs = -1  " default: 500 to avoid slowing the UI
 
-" NERDCommenter
-filetype plugin on
-let g:NERDCreateDefaultMappings = 1
+"_NERDCommenter
+let g:NERDCreateDefaultMappings = 0
 let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
 
-" Vimspector
+"_Vimspector
 let g:vimspector_enable_mappings = 'HUMAN'
+
+"_Dashboard
+let g:dashboard_default_executive = 'telescope'
+let g:dashboard_custom_header = [
+\ ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
+\ ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
+\ ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
+\ ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
+\ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
+\ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+\]
 
 
 "______________________________________________________________________functions
