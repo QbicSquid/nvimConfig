@@ -162,21 +162,12 @@ function! StartUp()
         "q
     "end
 
-    lua require('lualine').setup()
     GitGutterDisable
-endfunction
-
-function! TablineStartUp()
-    lua require('tabline').setup()
-    " change the function M._new_tab_data(tabnr, data) function
-    " to set show_all_buffers to false
-    " in tabline.lua line 115
 endfunction
 
 
 "________________________________________________________________________autocmd
 autocmd VimEnter * call StartUp()
-autocmd BufReadPre * ++once call TablineStartUp()
 
 
 "__________________________________________________________________________stuff
@@ -212,4 +203,6 @@ set cursorline
 set noshowmode
 
 runtime coc.vim     " call the coc.vim file
+lua require('lualine').setup()
 lua require('mini.indentscope').setup()
+lua require('tabline').setup()
