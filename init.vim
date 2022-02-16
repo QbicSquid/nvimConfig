@@ -2,7 +2,7 @@
 
 let mapleader=" "
 map <C-a> 1GV0G
-map <C-_> <plug>NERDCommenterInvert
+map <C-_> :CommentToggle<CR>
 map <leader>g :GitGutterToggle<CR>
 nmap <leader>rn <plug>lsp-rename
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>
@@ -71,10 +71,10 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'tpope/vim-surround'                       " edit brackets, quotation marks; both ends at once!
     Plug 'prettier/vim-prettier'                    " code formatter for html/css/js etc
     Plug 'mattn/emmet-vim'                          " HTML and CSS code completion
-    Plug 'preservim/nerdcommenter'                  " commenting out lines
+    "Plug 'preservim/nerdcommenter'                  " commenting out lines
     Plug 'airblade/vim-gitgutter'                   " uses git to show edited lines; see hotkeys
     Plug 'christoomey/vim-tmux-navigator'           " Intergrate tmux navigation with vim pane navigation
-    Plug 'octol/vim-cpp-enhanced-highlight'         " better sytax highlighitng for c/c++
+    "Plug 'octol/vim-cpp-enhanced-highlight'         " better sytax highlighitng for c/c++
     "Plug 'junegunn/fzf'
     "Plug 'junegunn/fzf.vim'                        " fuzzy search within files :Rg [keyword] to use
     "Plug 'gcmt/taboo.vim'                          " tab labeler. commands start with :Taboo
@@ -85,6 +85,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'nvim-telescope/telescope.nvim'            " fuzzy finder with many features
     Plug 'psliwka/vim-smoothie'                     " smooth scrolling
     Plug 'glepnir/dashboard-nvim'                   " Startup page
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Language parser (better syntax highlighting)
+    Plug 'terrortylor/nvim-comment'                 " commenter plugin
 call plug#end()
 
 "_Theme configs
@@ -93,7 +95,7 @@ call plug#end()
 "endif
 set background=dark
 
-let g:gruvbox_material_background = 'soft'
+let g:gruvbox_material_background = 'medium'
 " Available values:  'hard', 'medium', 'soft'
 let g:gruvbox_material_palette = 'material'
 " Available values:  'material', 'mix', 'original'
@@ -163,6 +165,7 @@ function! StartUp()
     "end
 
     GitGutterDisable
+    mod " redraw screen, Fixes the tabline at startup
 endfunction
 
 
@@ -191,7 +194,8 @@ set splitbelow " open new horizontal splits, below
 set splitright " open new   vertical splits, to the right
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro " stop commenting new lines
 set autochdir " always set the current working dir to the dir of the editing file
-set foldmethod=indent
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 set foldlevel=99 " stops folds with depth less than 99 from folding
 set foldcolumn=0 " increase to see fold column
 " type :%foldc to close the all the top level folds only
@@ -206,3 +210,5 @@ runtime coc.vim     " call the coc.vim file
 lua require('lualine').setup()
 lua require('mini.indentscope').setup()
 lua require('tabline').setup()
+lua require('configs.treesitter-config')
+lua require('configs.nvim_comment-config')
