@@ -10,6 +10,7 @@ nnoremap <silent> <Tab> :bnext<CR>
 nnoremap <silent> <S-Tab> :bprev<CR>
 tnoremap <esc> <C-\><C-n>
 nnoremap <C-p> :Telescope<CR>
+nnoremap <leader>cg :call gruvbox#invert_signs_toggle()<CR>:<CR>
 
 "_see documentation and completion. C-f and C-b to scroll
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -111,6 +112,13 @@ let g:sonokai_style = 'andromeda'
 " Available styles:  'default', 'atlantis', 'andromeda', 'shusia', 'maia', 'espresso'
 let g:sonokai_enable_italic = 1
 let g:sonokai_disable_italic_comment = 1
+let g:gruvbox_invert_selection = 0
+
+let g:gruvbox_bold = 0
+let g:gruvbox_termcolors = 256
+let g:gruvbox_underline = 0
+let g:gruvbox_invert_signs = 1
+let g:gruvbox_vert_split = "blue"
 
 colorscheme gruvbox
 
