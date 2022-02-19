@@ -89,6 +89,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'nvim-lualine/lualine.nvim'                " prettier status line
     Plug 'kdheepak/tabline.nvim'                    " prettier tab line
     Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
     Plug 'nvim-telescope/telescope.nvim'            " fuzzy finder with many features
     Plug 'psliwka/vim-smoothie'                     " smooth scrolling
     Plug 'glepnir/dashboard-nvim'                   " Startup page
@@ -225,3 +226,4 @@ lua require('mini.indentscope').setup()
 lua require('tabline').setup()
 lua require('configs.treesitter-config')
 lua require('configs.nvim_comment-config')
+lua require('configs.telescope-config')
