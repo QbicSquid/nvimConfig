@@ -208,8 +208,8 @@ set splitbelow " open new horizontal splits, below
 set splitright " open new   vertical splits, to the right
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro " stop commenting new lines
 set autochdir " always set the current working dir to the dir of the editing file
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
+set foldmethod=indent
+"set foldexpr=nvim_treesitter#foldexpr()
 set foldlevel=99 " stops folds with depth less than 99 from folding
 set foldcolumn=0 " increase to see fold column
 " type :%foldc to close the all the top level folds only
