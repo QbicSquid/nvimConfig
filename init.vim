@@ -95,6 +95,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'glepnir/dashboard-nvim'                   " Startup page
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Language parser (better syntax highlighting)
     Plug 'terrortylor/nvim-comment'                 " commenter plugin
+    Plug 'justinmk/vim-sneak'                       " fast cursor navigation
 call plug#end()
 
 "_Theme configs
@@ -167,6 +168,9 @@ let g:dashboard_custom_header = [
 \ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
 \]
 
+"_tabline
+let g:tabline_show_filename_only = 1 " remove this line to disable the feature
+
 
 "______________________________________________________________________functions
 
@@ -185,6 +189,7 @@ endfunction
 
 "________________________________________________________________________autocmd
 autocmd VimEnter * call StartUp()
+autocmd BufReadPost * ++once mod " redraw screen, Fixes the tabline at startup
 
 
 "__________________________________________________________________________stuff
@@ -202,7 +207,7 @@ set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
-set updatetime=100 " default: 4000 (4 seconds)
+set updatetime=750 " default: 4000 (4 seconds)
 " set clipboard+=unnamedplus " always yank/pull to system clipboard
 set splitbelow " open new horizontal splits, below
 set splitright " open new   vertical splits, to the right
