@@ -2,7 +2,7 @@
 
 let mapleader=" "
 map <C-a> 1GV0G
-map <C-_> :CommentToggle<CR>
+map <C-_> :LuamentToggle<CR>
 map <leader>g :GitGutterToggle<CR>
 nmap <leader>rn <plug>lsp-rename
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>
@@ -232,3 +232,6 @@ lua require('tabline').setup()
 lua require('configs.treesitter-config')
 lua require('configs.nvim_comment-config')
 lua require('configs.telescope-config')
+
+" testing my plugin
+lua require('luament.luament').setup()
