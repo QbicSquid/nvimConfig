@@ -189,7 +189,7 @@ endfunction
 
 "________________________________________________________________________autocmd
 autocmd VimEnter * call StartUp()
-autocmd BufReadPost * ++once mod " redraw screen, Fixes the tabline at startup
+autocmd BufReadPost,BufNewFile * ++once mod " redraw screen, Fixes the tabline at startup
 
 
 "__________________________________________________________________________stuff
