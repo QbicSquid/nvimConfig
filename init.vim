@@ -59,8 +59,9 @@ nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
 " curl https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -o plug.vim
 
 set nocompatible	" be iMproved, required
-"filetype off		" required
 
+" check https://github.com/junegunn/vim-plug/issues/379 for options that are
+" enabled by plug#end
 call plug#begin('~/.config/nvim/plugged')
     Plug 'morhetz/gruvbox'				            " color scheme
     Plug 'arcticicestudio/nord-vim'                 " color scheme

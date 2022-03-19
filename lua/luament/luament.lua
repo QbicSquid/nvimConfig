@@ -5,14 +5,21 @@ local M = {}
 -- TODO: add
 --      1) first non-whitespace chara comment
 --      2) indent based block comment
--- modes
+--      modes
+-- TOD: add
+--      1) multiline block comment support
+--      2) ability to define comment strings for local buffer
+-- TODO: finish the default config
+--      add comment_strs_start and comment_strs_end for multiline block comments
+--      add more default languages, refer,
+--      https://geekflare.com/how-to-add-comments/
 
 function M.setup(config)
     if config ~= nil then
         M.config = config
     else
-        require('luament.tmp')
-        M.config = Def_conf
+        require('luament.Default_Config')
+        M.config = Default_Config
     end
 
     M.comment_str = nil
