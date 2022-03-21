@@ -6,14 +6,25 @@ command AutoPairsToggle :call AutoPairsToggle()
 let mapleader=" "
 map <C-a> 1GV0G
 map <C-_> :CommentToggle<CR>
-map <leader>g :GitGutterToggle<CR>
 nmap <leader>rn <plug>lsp-rename
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>
+nnoremap <C-p> :Telescope<CR>
+
+"_moving between buffers
+" use <C-^> to jump between last visited buffer
+nmap <leader>b :ls<CR>:b<space>
 nnoremap <silent> <Tab> :bnext<CR>
 nnoremap <silent> <S-Tab> :bprev<CR>
 tnoremap <esc> <C-\><C-n>
-nnoremap <C-p> :Telescope<CR>
-nnoremap <leader>cg :call gruvbox#invert_signs_toggle()<CR>:<CR>
+
+"_git stuff
+nmap <leader>gt :GitGutterToggle<CR>
+nnoremap <leader>gc :call gruvbox#invert_signs_toggle()<CR>:<CR>
+    " inverting signs resets the hl CursorLine and hl CursorLineNR options
+nmap <leader>G :Git 
+nmap <leader>gg :G<CR>
+nmap <leader>gh :diffget //2<CR>
+nmap <leader>gl :diffget //3<CR>
 
 "_see documentation and completion. C-f and C-b to scroll
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -103,33 +114,36 @@ call plug#begin('~/.config/nvim/plugged')
 call plug#end()
 
 "_Theme configs
-"if has('termguicolors')
-  "set termguicolors
-"endif
+if has('termguicolors')
+  set termguicolors
+endif
 set background=dark
 
 let g:gruvbox_material_background = 'medium'
-" Available values:  'hard', 'medium', 'soft'
+    " Available values:  'hard', 'medium', 'soft'
 let g:gruvbox_material_palette = 'material'
-" Available values:  'material', 'mix', 'original'
+    " Available values:  'material', 'mix', 'original'
 let g:gruvbox_material_enable_italic = 1
 let g:gruvbox_material_disable_italic_comment = 1
 
-let g:edge_style = 'aura'
-" Available styles:  'default', 'aura', 'neon'
+let g:edge_style = 'neon'
+    " Available styles:  'default', 'aura', 'neon'
 let g:edge_enable_italic = 1
 let g:edge_disable_italic_comment = 1
 
-let g:sonokai_style = 'andromeda'
-" Available styles:  'default', 'atlantis', 'andromeda', 'shusia', 'maia', 'espresso'
+let g:sonokai_style = 'altantis'
+    " Available styles:  'default', 'atlantis', 'andromeda', 'shusia', 'maia', 'espresso'
 let g:sonokai_enable_italic = 1
 let g:sonokai_disable_italic_comment = 1
 let g:gruvbox_invert_selection = 0
 
+let g:gruvbox_italic = 1
 let g:gruvbox_bold = 0
 let g:gruvbox_termcolors = 256
 let g:gruvbox_underline = 0
-let g:gruvbox_invert_signs = 1
+let g:gruvbox_invert_signs = 0
+let g:gruvbox_contrast_dark = 'medium'
+let g:gruvbox_sign_column = 'bg0'
 
 colorscheme gruvbox
 
@@ -193,13 +207,15 @@ endfunction
 
 "________________________________________________________________________autocmd
 autocmd VimEnter * call StartUp()
-autocmd BufNewFile * ++once mod " redraw screen, Fixes the tabline at startup
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o " stop commenting new lines
+autocmd BufNewFile * ++once mod
+    " redraw screen, Fixes the tabline at startup
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+    " stop commenting new lines
 
 
 "_______________________________________________________________________Sourcing
 
-runtime coc.vim     " call the coc.vim file
+runtime coc.vim
 lua require('lualine').setup()
 lua require('mini.indentscope').setup()
 lua require('tabline').setup()
@@ -224,19 +240,25 @@ set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
-set updatetime=750 " default: 4000 (4 seconds)
-" set clipboard+=unnamedplus " always yank/pull to system clipboard
-set splitbelow " open new horizontal splits, below
-set splitright " open new   vertical splits, to the right
-set autochdir " always set the current working dir to the dir of the editing file
+set updatetime=750
+    " default: 4000 (4 seconds)
+"set clipboard+=unnamedplus " always yank/pull to system clipboard
+set splitbelow
+    " open new horizontal splits, below
+set splitright
+    " open new   vertical splits, to the right
+set autochdir
+    " always set the current working dir to the dir of the editing file
 set foldmethod=indent
 "set foldexpr=nvim_treesitter#foldexpr()
-set foldlevel=99 " stops folds with depth less than 99 from folding
-set foldcolumn=0 " increase to see fold column
-" type :%foldc to close the all the top level folds only
+set foldlevel=99
+    " stops folds with depth less than 99 from folding
+set foldcolumn=0
+    " increase to see fold column
+    " type :%foldc to close the all the top level folds only
 set mouse=a
-" highlighting the current line number (next 3 lines)
 highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
-highlight CursorLineNR cterm=NONE ctermbg=NONE ctermfg=yellow guibg=NONE guifg=yellow
+    " highlighting the current line number (next 3 lines)
+highlight CursorLineNR cterm=NONE ctermbg=NONE ctermfg=Yellow guibg=NONE guifg=Orange
 set cursorline
 set noshowmode
