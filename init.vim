@@ -193,10 +193,22 @@ endfunction
 
 "________________________________________________________________________autocmd
 autocmd VimEnter * call StartUp()
-autocmd BufReadPost,BufNewFile * ++once mod " redraw screen, Fixes the tabline at startup
+autocmd BufNewFile * ++once mod " redraw screen, Fixes the tabline at startup
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o " stop commenting new lines
 
 
-"__________________________________________________________________________stuff
+"_______________________________________________________________________Sourcing
+
+runtime coc.vim     " call the coc.vim file
+lua require('lualine').setup()
+lua require('mini.indentscope').setup()
+lua require('tabline').setup()
+lua require('configs.treesitter-config')
+lua require('configs.nvim_comment-config')
+lua require('configs.telescope-config')
+
+
+"_________________________________________________________________________options
 
 filetype plugin indent on
 syntax on
@@ -216,7 +228,6 @@ set updatetime=750 " default: 4000 (4 seconds)
 " set clipboard+=unnamedplus " always yank/pull to system clipboard
 set splitbelow " open new horizontal splits, below
 set splitright " open new   vertical splits, to the right
-autocmd BufNewFile,BufRead * setlocal formatoptions-=cro " stop commenting new lines
 set autochdir " always set the current working dir to the dir of the editing file
 set foldmethod=indent
 "set foldexpr=nvim_treesitter#foldexpr()
@@ -229,11 +240,3 @@ highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 highlight CursorLineNR cterm=NONE ctermbg=NONE ctermfg=yellow guibg=NONE guifg=yellow
 set cursorline
 set noshowmode
-
-runtime coc.vim     " call the coc.vim file
-lua require('lualine').setup()
-lua require('mini.indentscope').setup()
-lua require('tabline').setup()
-lua require('configs.treesitter-config')
-lua require('configs.nvim_comment-config')
-lua require('configs.telescope-config')
