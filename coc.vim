@@ -173,6 +173,7 @@ let g:coc_global_extensions = [
     \ 'coc-clangd',
     \ 'coc-pyright',
     \ 'coc-java',
-    \ 'coc-lua'
+    \ 'coc-lua',
+    \ 'coc-sql'
     \]
 

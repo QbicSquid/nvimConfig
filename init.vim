@@ -216,9 +216,9 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 "_______________________________________________________________________Sourcing
 
 runtime coc.vim
-lua require('lualine').setup()
 lua require('mini.indentscope').setup()
 lua require('tabline').setup()
+lua require('configs.lualine-config')
 lua require('configs.treesitter-config')
 lua require('configs.nvim_comment-config')
 lua require('configs.telescope-config')
