@@ -7,5 +7,6 @@
     "json",
     "html",
     "css"
-  ]
+  ],
+  "java.format.settings.url": "/home/shifan/.config/coc/extensions/node_modules/coc-java/formatters/eclipse-formatter.xml"
 }

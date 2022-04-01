@@ -242,13 +242,14 @@ set expandtab
 set smartindent
 set updatetime=750
     " default: 4000 (4 seconds)
-"set clipboard+=unnamedplus " always yank/pull to system clipboard
+"set clipboard+=unnamedplus
+    " always yank/pull to system clipboard
 set splitbelow
     " open new horizontal splits, below
 set splitright
     " open new   vertical splits, to the right
-set autochdir
-    " always set the current working dir to the dir of the editing file
+"set autochdir
+    " always set the CWD to the dir of the editing file (causes issues with coc-java)
 set foldmethod=indent
 "set foldexpr=nvim_treesitter#foldexpr()
 set foldlevel=99
@@ -258,7 +259,6 @@ set foldcolumn=0
     " type :%foldc to close the all the top level folds only
 set mouse=a
 highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
-    " highlighting the current line number (next 3 lines)
 highlight CursorLineNR cterm=NONE ctermbg=NONE ctermfg=Yellow guibg=NONE guifg=Orange
 set cursorline
 set noshowmode
